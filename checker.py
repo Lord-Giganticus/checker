@@ -36,18 +36,19 @@ class extension:
             if update == 1:
                 if program_location.endswith('modules\checker') == True:
                     os.chdir('../')
-                    start = os.getcwd()
-                    for dir in os.listdir(os.getcwd()):
-                        if os.path.isdir(dir) == True:
-                            if dir.endswith('checker') == False:
-                                folder_list.append(dir)
+                    for dir in os.walk(os.getcwd()):
+                        os.chdir(dir[0])
+                        if os.getcwd().endswith('checker') == False and os.path.isdir(dir) == True:
+                            folder_list.append(dir)
                 else:
                     os.chdir('modules')
-                    start = os.getcwd()
                     for dir in os.listdir(os.getcwd()):
+                        os.chdir(dir[0])
                         if os.path.isdir(dir) == True:
                             folder_list.append(dir)
                 length = len(folder_list)
+                os.chdir('../')
+                start = os.getcwd()
                 while entry <= length:
                     os.chdir(folder_list[entry])
                     for file in os.listdir(os.getcwd()):
