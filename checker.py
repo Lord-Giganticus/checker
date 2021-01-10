@@ -2,7 +2,6 @@
 import time
 import os
 from pip import main as pipmain
-
 name = os.path.basename(__file__)
 folder_list = []
 file_list = []
@@ -14,22 +13,10 @@ ga = str('.gitattributes')
 
 class module:
     def checker(a:str):
-        code = 'import',a
-        try:
-            code()
-            imported = True
-        except:
-            print('Module not found!')
-            time.sleep(2)
-            print("Attempting pip install.")
-            time.sleep(5)
-            pipmain(['install', a])
-            imported = False
-        if imported == True:
-            return print(a,'is already installed and is imported!'), time.sleep(5)
-        else:
-            return print(a,'is now installed. Importing now.'), time.sleep(2), code(), time.sleep(5)
-
+        print("Attempting pip check.")
+        time.sleep(5)
+        pipmain(['install', a])
+        return print(a,'is installed.')
 class extension:
     def checker():
         if name.endswith('.py') == True:
