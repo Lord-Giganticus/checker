@@ -31,7 +31,7 @@ class extension:
                 time.sleep(2)
                 if os.path.isdir('modules') == False:
                     input("the modules folder doesn't exist! This function cannot work without it! Press enter to exit.")
-                    exit()
+                    return exit()
             update = int(input('Do you want to update the submodules inside the modules folder?\n[1]Yes\n[2]No\n'))
             if update == 1:
                 if program_location.endswith('modules\checker') == True:
@@ -72,7 +72,7 @@ class extension:
             time.sleep(2)
             if name.endswith('.exe') == False:
                 input("Script is not a exe! Ima guess it's a pyi or something. Please convert it to a py file! Press enter to exit.")
-                exit()
+                return exit()
             else:
                 return print('Yep! I was right! No need to update submodules because it is all compiled in the exe.')
 
