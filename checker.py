@@ -35,7 +35,7 @@ class extension:
         if name.endswith('.py') == True:
             print('The script is a py file. Checking to see what folder checker is in.')
             time.sleep(2)
-            if program_location.endswith('modules') == True:
+            if program_location.endswith('modules\checker') == True:
                 print('checker is in the modules folder.')
             else:
                 print('checker is not in the modules folder.')
@@ -47,7 +47,8 @@ class extension:
                     exit()
             update = int(input('Do you want to update the submodules inside the modules folder?\n[1]Yes\n[2]No\n'))
             if update == 1:
-                if program_location.endswith('modules') == True:
+                if program_location.endswith('modules\checker') == True:
+                    os.chdir('../')
                     start = os.getcwd()
                     for dir in os.listdir(os.getcwd()):
                         if os.path.isdir(dir) == True:
@@ -69,7 +70,7 @@ class extension:
                     os.chdir(start)
                     entry = entry + 1
                 if entry > length:
-                    if program_location.endswith('modules') == True:
+                    if program_location.endswith('modules\checker') == True:
                         return print('All submodules (but checker) were updated or are up to date.')
                     else:
                         return print('All submodules were updated or are up to date.')
