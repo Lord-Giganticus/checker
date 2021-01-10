@@ -17,14 +17,18 @@ class module:
         code = 'import',a
         try:
             code()
+            imported = True
         except:
             print('Module not found!')
             time.sleep(2)
             print("Attempting pip install.")
             time.sleep(5)
-            pipmain(['install', a])  
-        print(a,'is installed and working!')
-        time.sleep(5)
+            pipmain(['install', a])
+            imported = False
+        if imported == True:
+            return print(a,'is already installed and is imported!'), time.sleep(5)
+        else:
+            return print(a,'is now installed. Importing now.'), time.sleep(2), code(), time.sleep(5)
 
 class extension:
     def checker():
@@ -66,12 +70,12 @@ class extension:
                     entry = entry + 1
                 if entry > length:
                     if program_location.endswith('modules') == True:
-                        print('All submodules (but checker) were updated or are up to date.')
+                        return print('All submodules (but checker) were updated or are up to date.')
                     else:
-                        print('All submodules were updated or are up to date.')
+                        return print('All submodules were updated or are up to date.')
             elif update == 2:
                 print('Ok nothing will be updated! You might want to update stuff next time.')
-            time.sleep(5)
+            return time.sleep(5)
         else:
             print("script is not a .py file so I'm assuming that this is a .exe file.")
             time.sleep(2)
@@ -81,7 +85,7 @@ class extension:
                 input("Script is not a exe! Ima guess it's a pyi or something. Please convert it to a py file! Press enter to exit.")
                 exit()
             else:
-                print('Yep! I was right! No need to update submodules because it is all compiled in the exe.')
+                return print('Yep! I was right! No need to update submodules because it is all compiled in the exe.')
 
 print('checker is all setup.')
 time.sleep(2)
